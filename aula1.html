@@ -1,0 +1,23 @@
+<html xmlns="htpp://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<title>JQuery aula 1</title>
+		<script type="text/javascript" language="javascript" charset="utf-8" src="js/jquery-1.9.1.min.js">
+		</script>
+		
+		<script type="text/javascript" >
+			
+			$(document).ready(
+			function() {
+				$("a").click(function() {
+					$("#titulo").css("color", "#0000FF")
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<h1 id="titulo">Hello world!</h1>
+		<a href="#">Executar javascript</a>
+	</body>
+</html>
