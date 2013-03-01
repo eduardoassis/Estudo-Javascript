@@ -1,23 +1,12 @@
 <html xmlns="htpp://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<title>JQuery aula 2</title>
+		<title>JQuery aula 3</title>
 		<script type="text/javascript" language="javascript" charset="utf-8" src="js/jquery-1.9.1.min.js">
 		</script>
 		
-		<script type="text/javascript" >
+		<script type="text/javascript" src="js/aula/03.js"></script>
 			
-			$(document).ready(
-			function() {
-				$("a").css("color", "red").click(function() {
-					$("#titulo")
-					.css("color", "#0000FF")
-					.text("Curso de JQuery")
-					.hide()
-					.fadeToggle();
-				});
-			});
-		</script>
 	</head>
 
 	<body>
@@ -25,5 +14,6 @@
 		<a href="#">Executar javascript</a><br>
 		<a href="#">Executar javascript Dois</a><br>
 		<a href="#">Executar javascript Tres</a><br>
+
 	</body>
 </html>

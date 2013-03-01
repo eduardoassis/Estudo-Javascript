@@ -1,0 +1,29 @@
+<html xmlns="htpp://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<title>JQuery aula 3</title>
+		<script type="text/javascript" language="javascript" charset="utf-8" src="js/jquery-1.9.1.min.js">
+		</script>
+		
+		<script type="text/javascript" src="js/aula/03.js"></script>
+			
+	</head>
+
+	<body>
+		<h2>Árvore</h2>
+
+		<div>
+			<ul>
+				<li id="Item1">
+					Primeiro
+					<span style="color:blue;">Item</span>
+					<ul>				
+						<li id="Item1_1">Item 1.1</li>
+						<li id="Item1_2">Item 1.2</li>
+						<li id="Item1_3">Item 1.3</li>
+					</ul>	
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
