@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+  <title>Testes</title>
+</head>
+
+<body>
+
+  <script>
+
+
+    var x = 2;
+
+    // ############ Module Pattern
+    // Declarar funcao anonima e chama-la. esta funcao é utilizada apenas para fechar um escopo.
+    (function ( ) {
+
+      var x = 1;
+    })();
+
+    // ############ Namespace
+    // Conceito de pacotes. Criar objeto e colocar tudo da sua app dentro dele, ao inves de utilizar o escopo global.
+    var Chess = {};
+
+    Chess.Board = (function () {
+      return {
+        size: [10, 10]
+      };
+    });
+
+    var board = Chess.Board();
+
+    // Globais - declarar sem var ou atribuir ao objeto window.
+    (function() {
+      meuGlobal1 = 1;
+      window.meuGlobal2 = 2;
+    })();
+
+    // ############  Função construtora / objetos
+
+    // 1- retornando o objeto
+    // pode usar new ou nao.
+    // OBS: New retorna uma copia da função caso nenhum valor seja retornado. Se um obj for retornado na função
+    // o new nao faz diferenca.
+    // Toda vez que for chamada a função, criará novos métodos.
+
+    var Person = function (n) {
+
+      // Atributo Privado
+      var name = n;
+
+      var showName = function () {
+        alert(that.idade);
+      };
+
+      // retorna o objeto que será construido
+      var that = {
+
+        idade: 18,  // Atributo publico
+        cpf: "000999878877",
+
+        getName: function() {  //metodo publico
+          return name;
+        },
+        setName: function(x) {
+          name = x;
+        },
+        speak: function( ) {
+          // chamando funcao privade a partir d um metodo publico.
+          showName();
+        }
+      };
+
+      return that;
+    };
+
+    // 2- retornando o objeto
+    // Deve usar o new sempre
+    // Toda vez que for chamada a função, criará novos métodos.
+    var Cat = function (n) {
+
+      var that = this;
+      // Atributo Privado
+      var name = n;
+
+      // atributo publico
+      this.idade = 18;
+
+      var showName = function () {
+        alert(that.idade);
+      };
+
+      // funcao publica / privilegiada (tem acesso aos privados)
+      this.getName = function() {
+        return name;
+      };
+
+      this.speak = function( ) {
+          // chamando funcao privade a partir d um metodo publico.
+          showName();
+      };
+    };
+
+    // 3- Prototype
+    // Deve usar o new;
+    // não consegue utilizar privados
+
+    var Dog = function () {
+
+      // atributo privado inacessivel
+      var name = "joao";
+
+      // metodo privado inacessivel
+      var showName = function () {
+        alert(name);
+      };
+
+      // atributo privado por convencao
+      this._name = "judas";
+
+      // Atributo publico
+      this.idade = 18;
+    };
+
+    Dog.prototype.sayIdade = function () {
+
+      alert(this.idade);
+    };
+
+    // Metodo privado por convencao
+    Dog.prototype._showName = function() {
+      alert(this._name);
+    };
+
+    // metodo publico
+    Dog.prototype.speak = function() {
+      this._showName()
+    };
+
+    // ############ Module pattern + OO com prototype + namespace.
+    // Forma como eu prefiro
+
+    // Modulo.
+  (function() {
+
+      // namespace
+      window.myApp = window.mayApp || {};
+
+      // Variavel privada compartilhada por todas as instancias de ant.
+      // visualizada por todo o contexto do modulo.
+      var antCount = 0;
+
+      // Funcao construtora
+      // O que for declarado aki dentro é por instancia
+      window.myApp.Ant = function () {
+
+        antCount++;
+        // Atributo publico
+        this.especie = "Formiga";
+        this.name = "Jony";
+
+        // atributo privado por convensao
+        this._idade = 18;
+      };
+
+      var Ant = window.myApp.Ant; // Soh pra facilitar a vida.
+
+      // Atributo da classe (estatico) e publico.
+      Ant.casa = "Formigueiro";
+
+      // metodo publico
+      Ant.prototype.speak = function() {
+        alert(this.especie);
+      };
+
+      // metodo privado por convencao
+      Ant.prototype._speakIdade = function() {
+        alert(this._idade);
+      };
+
+      // Funcao privada disponivel dentro do modulo.
+      // funcao compartilhada por todas as instancias.
+      // pode ser utilizada chamando speakName.call(this);
+      var speakName = function () {
+        alert(this.name)
+      };
+
+    })();
+
+    // var f = new myApp.Ant();
+  </script>
+</body>
+</html>

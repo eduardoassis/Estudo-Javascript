@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+  <title>Javascript - Exercício 1</title>
+</head>
+
+<body>
+
+<h1>Javascript  - Exercício 1</h1>
+
+<p>
+  Abra este arquivo html, edite e implemente a função <strong>toJSON</strong>.
+  A função deve receber um objeto e retornar uma string contentdo um JSON a partir
+  dele. Devem ser impressas todas as propriedades to objeto, ignorando as
+  propriedades do protótipo e as funções. Você pode validar o JSON gerado no
+  <a href="http://jsonlint.com/" target="_blank">JsonLint</a>.
+</p>
+<p>
+  Dicas: hasOwnProperty, typeof
+</p>
+
+<section id="results"></section>
+
+</body>
+
+<script>
+
+  // Implemente esta função:
+
+  function toJSON( obj ) {
+    if ( obj === null || obj === undefined ) return "null";
+
+    if ( typeof obj === "object" ) {
+
+      if( Array.isArray( obj ) ) 
+        return arrayToJson( obj );
+      
+      return objectToJson( obj );
+
+    } else {
+
+      if ( typeof obj === "string" ) return '"' + obj + '"';
+      else return "" + obj;
+
+    }
+  }
+
+  function objectToJson( obj ) {
+    var stringJson = "{" , i = 0;
+
+    for (var property in obj) {
+
+      if ( typeof obj[property] === "function" || !obj.hasOwnProperty(property) ) continue;      
+
+      stringJson += '"' + property + '":' + toJSON( obj[property] );
+      if ( !isLast( property, obj ) ) stringJson += ",";      
+
+    }
+    return stringJson + "}";
+  }
+
+  function arrayToJson( obj ) {
+    var stringJson = "[";
+
+    for (var i = 0; i < obj.length; i++) {
+
+      stringJson += toJSON( obj[i] );
+      if ( !isLast( i, obj ) ) stringJson += ",";
+      
+    }     
+    
+    return stringJson += "]";
+  }
+
+  function isLast( property, obj ) {
+    return obj[Object.keys(obj)[Object.keys(obj).length - 1]] === obj[property];      
+  }
+
+  // Objetos para teste. Altere / adicione caso necessário.
+
+  var tests = []
+  
+  tests[0] = {
+    id: 13,
+    name: "Fernando Simeone",
+    role: {
+      id: 5,
+      name: "Desenvolvedor"
+    }
+  };
+  tests[0].__proto__.novaPropriedade = "teste";
+
+  tests[1] = [1, { id: 3}, true];
+
+  tests[2] = [1,null, undefined, tests[1]];
+  
+  tests[3] = {
+      id: 1,
+      name: null,
+      save: function () { alert("save"); return 0; },
+      roles: [
+        {id: 1, },
+        {id: 2, children: [ {id: 3, id: 4} ] }
+      ],
+      parents: [],
+      money: 45.70
+    };
+
+  //O código abaixo é utilizado para a execução automática dos testes. Não modifique.
+
+  (function (tests) {
+    var html = "", i = 0;
+
+    for (i = 0; i < tests.length; i++)
+      html += "<h2>Teste " + i+ "</h2><p>" +
+                    "<strong>Resultado:</strong></p><p>" + toJSON(tests[i], "") + "</p>" +
+                    "<p><strong>Resultado esperado:</strong></p>" + JSON.stringify(tests[i]) ;
+
+    document.getElementById("results").innerHTML = html;
+  })(tests);
+
+</script>
+</html>
