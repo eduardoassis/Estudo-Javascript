@@ -1,0 +1,60 @@
+Vantagens 
+Funções, tipagem fraca, objetos dinâmicos
+
+Desvantagens
+Modelo de programação baseado em variáveis globais.
+
+JavaScript depende de variáveis globais para realizar linkagem.
+
+Whitespace
+Evitar comentário em bloco - /* */ - pois pode ocorrer erros como o exemplo de expressões regulares
+
+Names
+
+Palavras reservadas que não podem ser usadas como nomes.
+
+Nomes podem ser usados para declarações, variáveis, parâmetros, nomes de propriedades, operadores, funções e etiquetas (labels).  
+
+Palavras reservadas
+
+abstract 
+boolean break byte
+case catch char class const continue
+debugger default delete do double
+else enum export extends
+false final finally float for function
+goto 
+if implements import in instanceof int interface
+long native new null
+package private protected public 
+return 
+short static super switch synchronized 
+this throw throws transient true try typeof
+var volatile void
+while with
+
+undefined
+NaN 
+Infinity
+
+Numbers
+
+JavaScript possui somente um tipo para números.
+Não há distinção entre números inteiros como 1 e 1.0.
+Evita a necessisdade de um grande número de classes de erros, pois não existem problemas como overflow em inteiros de menor precisão.
+
+Strings
+
+A contrabarra é o caracter de escape.
+Todos os caracteres em JavaScript são de 16 bits.
+Não possui um tipo para representar um caracter, para isso basta criar uma string com um único caracter.
+Strings são imutáveis.
+Duas strings contendo exatamente os mesmos caracteres na mesma ordem, são consideradas a mesma string.
+
+Declarações
+
+"Um bloco é um conjunto de instruções envolto em chaves. Ao contrário de muitas outras linguagens, blocos em JavaScript não criam um novo escopo, então as variáveis ​​devem ser definidas no início da função, não em blocos." ????
+
+
+Prototype 
+Ao que parece serve para criar herança, ou pode ser usado com essa finalidade. Não intendi muito bem.

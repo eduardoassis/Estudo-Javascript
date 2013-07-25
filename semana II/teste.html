@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+  <title>Javascript - Exercício 2 - Parte 1</title>
+</head>
+
+<body>
+
+<h1>Javascript  - Segunda semana</h1>
+
+<section id="results"></section>
+
+</body>
+
+<script>
+
+
+  /**
+  *
+  * Block comment
+  *
+  
+  
+  var myObject = new function(){};
+  myObject.value = 0;
+  myObject.increment = function( inc ) {
+    this.value += typeof inc === 'number' ? inc : 1;
+  };
+
+  myObject.increment();
+  //alert( myObject.value );
+
+  myObject.increment( 2 );
+  //alert( myObject.value );
+
+  var add = function( a, b ) {
+    return a + b;
+  };
+
+  var sum = add( 3, 4 );
+
+  //alert("Soma: " + sum );
+
+  myObject.double = function() {
+
+    var externalThis = this;
+    var helper = function() {
+      externalThis.value = add( externalThis.value, externalThis.value );
+    };
+
+    helper(this);
+  };
+
+  myObject.double();
+  //alert( myObject.value );
+
+
+  var Quo = function( string ){
+    this.status = string;
+  };
+
+  Quo.prototype.get_status = function() {
+    return this.status;
+  };
+
+  var myQuo = new Quo( "confused" );
+
+  //alert( myQuo.get_status() );  
+
+  var array = [3, 5];
+  sum = add.apply( null, array );
+
+  alert(sum);
+
+  var statusObject = {
+    status: 'A-OK'
+  };
+
+  var status = Quo.prototype.get_status.apply( statusObject );
+  alert(status);
+  **/
+
+var add = function( a, b ) {
+  if( typeof a !== 'number' || typeof b !== 'number' ) {
+    var exception = {
+      name: 'TypeError',
+      message: 'add needs numbers'
+    };
+    throw exception;
+  };
+  return a + b;
+}
+
+var sum = function() {
+  var i, sum = 0;
+
+  for (var i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  };
+  return sum;
+}
+
+alert( sum( 3, 8, 15, 16, 23, 42 ) );
+
+console.log( add( 4, 5 ) );
+
+try{
+  console.log( add( 4, 'f' ) );  
+} catch( ex ) {
+  console.log( ex.name + ': ' + ex.message );
+}
+
+
+</script>
+
+</html>

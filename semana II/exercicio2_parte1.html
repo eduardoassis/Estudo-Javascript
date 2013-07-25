@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+  <title>Javascript - Exercício 2 - Parte 1</title>
+</head>
+
+<body>
+
+<h1>Javascript  - Segunda semana</h1>
+
+<section id="results"></section>
+
+</body>
+
+<script>
+
+/**
+*
+* Block comment
+*
+
+
+function criarObjs() {
+
+  var objs = [], i = 0;
+
+  for (i = 0; i < 5; i++) {
+    
+    objs.push({
+      hello:createHelloFunction(i)
+    });
+  }
+
+  return objs;
+};
+
+function createHelloFunction(index) {
+
+  return function () {
+    alert("meu index é " + index)
+  }
+}
+var objs = criarObjs();
+
+for (var i = 0; i < objs.length; i++) {
+  objs[i].hello();
+};
+**/
+/*
+
+- 4 padroes de chamada.
+- parametos (this, arguments, parametros declarados)
+Pesquisar:
+
+- Diferencas entre apply e call
+- Implementar funcao soma que recebe n parametros.
+- fazer testes com try cach
+
+*/
+
+
+function treeSearch( rootNode, value ) {
+
+  if ( rootNode.value === value ) {
+    return rootNode;
+  } else {
+    if ( rootNode.children && rootNode.children.length > 0 ) {
+
+      for ( var i = 0; i < rootNode.children.length; i++ ) {
+
+        var node = treeSearch( rootNode.children[i], value );
+
+        if ( node ) {
+          return node;
+        }
+      }
+    }  
+  } 
+  //return false;   
+};
+
+var tree =
+{
+  "value": 4,
+  "name": "Node 4",
+  "children": [
+    {
+      "value": 8,
+      "name": "Node 8",
+      "children": [
+        {
+          "value": 1,
+          "name": "Node 1",
+          "children": [
+            {
+              "value": 45,
+              "name": "Node 45",
+              "children": [ ]
+            }
+          ]
+        },
+        {
+          "value": 6,
+          "name": "Node 6",
+          "children": [ ]
+        },
+        {
+          "value": 7,
+          "name": "Node 7",
+          "children": [ ]
+        }
+      ]
+    },
+    {
+      "value": 9,
+      "name": "Node 9",
+      "children": [
+        {
+          "value": 5,
+          "name": "Node 5",
+          "children": [
+            {
+              "value": 500,
+              "name": "Node 500",
+              "children": [
+                {
+                  "value": 5000,
+                  "name": "Node 5000",
+                  "children": [          
+                  ]
+                }
+              ]
+            }  
+          ]
+        }
+      ]
+    },
+    {
+      "value": 13,
+      "name": "Node 13",
+      "children": [ ]
+    }
+  ]
+};
+
+
+
+(function ( tree ) {
+   var nodeResult = treeSearch( tree, 5000 );
+
+   if ( nodeResult && nodeResult !== null ) {
+     alert( nodeResult.name + ": " + nodeResult.value );
+   } else {
+     alert( "Nó não encontrado!" );
+   }
+})(tree);
+
+</script>
+
+</html>

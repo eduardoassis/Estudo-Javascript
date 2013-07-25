@@ -1,0 +1,46 @@
+<html>
+
+<script type="text/javascript">
+
+	function teste() {
+		
+		
+		var MYAPP = {};
+
+		MYAPP.stooge = {
+		"first-name": "Jerome",
+		"last-name": "Howard",
+		teste_name : {
+				name : "Eduardo"
+			},
+		"other_name": "Silva"
+		};
+
+		if (typeof Object.create === 'function') {
+				Object.create = function (o) {
+				var F = function () {};
+				F.prototype = o;
+				return new F();
+			};
+		}
+		var another_stooge = Object.create(MYAPP.stooge);
+
+		var i;
+		var properties = [
+			'first-name',
+			'teste_name',
+			'last-name',
+			'other_name'		
+		];
+		for (i = 0; i < properties.length; i += 1) {
+			document.writeln(properties[i] + ': ' +
+			another_stooge[properties[i]]);
+		}
+
+	};
+
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.2/prototype.js"></script>
+<body onload="teste();">
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+  <title>Javascript - Exercício 0</title>
+</head>
+
+<body>
+
+<h1>Javascript  - Exercício 1</h1>
+
+
+
+<script>
+
+(function(){
+
+window.Teste = function() {
+  this.name = "Nome";
+};
+
+
+window.Mammal = function() {
+  this.name = name = "Jão";
+};
+
+Mammal.prototype.get_name = function() {
+  return this.name;
+};
+
+Mammal.prototype.says = function() {
+  return this.saying || "";
+};
+
+})();
+
+
+
+try{
+
+  var teste = window.Teste;
+
+  var teste2 = Object.create( window.Teste );
+
+  var mammal = new Mammal();
+
+} catch (e) {
+  console.log(e.name + ': ' + e.message);
+};
+
+</script>
+
+</html>

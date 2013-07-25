@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+  <title>Javascript - Exercício 2 - Parte 1</title>
+</head>
+
+<body>
+
+<h1>Javascript  - Segunda semana</h1>
+
+<section id="results"></section>
+
+</body>
+
+<script>
+
+
+var add = function(a, b) {
+	if( typeof a != 'number' || typeof b != 'number') {
+		throw {
+			name : 'TypeError',
+			message: 'add needs numbers.'
+		};
+	}
+	return a + b;
+};
+
+(function() {
+	try{
+		add('seven');
+	} catch( e ) {
+		document.writeln(e.name + ': ' + e.message );
+	}
+})();
+
+</script>
+</html>
