@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
+  <title>Regexp</title>
+  <link rel="stylesheet" type="text/css" href="css/exercicio7.css">
+  <script type='text/javascript' src='js/validation.js'></script>
+  
+</head>
+
+<body>
+
+  <h1>Regexp</h1>
+
+  <p>
+        Crie regex de validação para cada campo abaixo. A validação deve ser executada no evento blur
+        de cada campo. crie seu código o mais genérico possível, a fim de evitar repetições. Após validar
+        o campo, caso haja erro, adicionar ao campo a classe de estilo "error", que fará com que o campo
+        fique com borda vermelha. Caso não haja erro, remover a classe "error".
+  </p>
+  <p>
+      As validações adicionadas devem ser:
+
+        <ul>
+          <li>Nome: apenas letras e deve começar com letras maiúcula.</li>
+          <li>Sobrenome: a mesma validação de nome</li>
+          <li>Idade: apenas números positivos (sem sinal)</li>
+          <li>Email: formato aaaa@bbbb.ccc, onde aaaa pode conter letras, . e _, bbb apenas letras e ccc apenas letras também.</li>
+          <li>CPF: DDD.DDD.DDD-DD, onde D é qualquer dígito</li>
+        </ul>
+  </p>
+
+  <p>
+      BONUS: Se puder, <strong>após conseguir criar as regexp</strong>, faça algo orientado a objetos,
+      como se pudesse ser utilizado em qualquer projeto. Como se fosse utilizar da seguinte forma, e a validação
+      já seria configurada no evento "blur" dos inputs:
+  </p>
+  <pre>
+      Validations.configure ( "email", Validations.EMAIL );
+      Validations.configure ( "idade", Validations.POSITIVE_INTEGER );
+  </pre>
+
+  <p>
+    <label for="nome" >Nome: </label>
+    <input id="nome" size="30" type="text" onblur="new Validation.validate(this.id).validateFirstName()"/>
+  </p>
+
+  <p>
+    <label for="sobrenome">Sobrenome: </label>
+    <input id="sobrenome" size="30" type="text" onblur="new Validation.validate(this.id).validateLastName()"/>
+  </p>
+
+  <p>
+    <label for="idade">Idade: </label>
+    <input id="idade" size="30" type="text" onblur="new Validation.validate(this.id).validateAge()" />
+  </p>
+
+  <p>
+    <label for="email">Email: </label>
+    <input id="email" size="30" type="text" onblur="new Validation.validate(this.id).validateEmail()"/>
+  </p>
+
+  <p>
+    <label for="cpf">CPF: </label>
+    <input id="cpf" size="30" type="text" onblur="new Validation.validate(this.id).validateCpf()"/>
+  </p>
+
+  <script type="text/javascript">
+    // Coloque seu código aqui.
+  </script>
+</body>
+</html>
